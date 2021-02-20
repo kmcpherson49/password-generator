@@ -6,7 +6,7 @@ var numericChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["!", "#", "$", "%", "&"];
 
 var userPasswordChoice = [];
-var passLength = ''
+//var passLength = ''
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -14,59 +14,66 @@ var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
 
-var passLength = prompt("How long would you like your password? Please choose a number between 8 and 128.");
-console.log(passLength);
-if (passLength === "" || passLength === null || isNaN(passLength)) {
-    window.alert("You didn't enter a valid choice, try again!");
-    // use return to call it again and stop the rest of this function from running
-    return generatePassword();
+    var passLength = prompt("How long would you like your password? Please choose a number between 8 and 128.");
+        console.log(passLength);
+        if (passLength === "" || passLength === null || isNaN(passLength)) {
+            window.alert("You didn't enter a valid choice, try again!");
+            // use return to call it again and stop the rest of this function from running
+            return generatePassword();
+            }
+        if (passLength < 8 || passLength > 128) {
+            window.alert("You didn't enter a valid choice, try again!");
+            // use return to call it again and stop the rest of this function from running
+            return generatePassword();
+            }
+
+    // include lowercase//
+    var lowerCase = window.confirm("Do you want your password to contain lowercase letters?");
+    // if true use lowercase, else don't use lowercase
+    if (lowerCase) {
+        userPasswordChoice.push(lowerChar)
     }
- if (passLength < 8 || passLength > 128) {
-     window.alert("You didn't enter a valid choice, try again!");
-    // use return to call it again and stop the rest of this function from running
-     return generatePassword();
-      }
+    console.log(userPasswordChoice)
 
-// include lowercase//
-var lowerCase = window.confirm("Do you want your password to contain lowercase letters?");
-// if true use lowercase, else don't use lowercase
-if (lowerCase) {
-    userPasswordChoice.push(lowerChar)
+    // include uppercase//
+    var upperCase = window.confirm("Do you want your password to contain uppercase letters?");
+    if (upperCase) {
+        userPasswordChoice.push(upperChar)
+    }
+    console.log(userPasswordChoice)
+
+    // include numeric values//
+    var numeric = window.confirm("Do you want your password to contain numeric values?");
+    if (numeric) {
+        userPasswordChoice.push(numericChar)
+    }
+    console.log(userPasswordChoice)
+
+    // include lowercase//
+    var special = window.confirm("Do you want your password to contain special characters?");
+    if (special) {
+        userPasswordChoice.push(specialChar)
+    }
+    console.log("this is line 60 log" + userPasswordChoice)
+    generator (userPasswordChoice, passLength);
 }
-    
-
-console.log(userPasswordChoice)
-
-
-// include uppercase//
-var upperCase = window.confirm("Do you want your password to contain uppercase letters?");
-if (upperCase) {
-    userPasswordChoice.push(upperChar)
-}
-console.log(userPasswordChoice)
-
-// include numeric values//
-var numeric = window.confirm("Do you want your password to contain numeric values?");
-if (numeric) {
-    userPasswordChoice.push(numericChar)
-}
-console.log(userPasswordChoice)
-
-// include lowercase//
-var special = window.confirm("Do you want your password to contain special characters?");
-if (special) {
-    userPasswordChoice.push(specialChar)
-}
-console.log(userPasswordChoice)
-
-}
+console.log("this is user choices" + userPasswordChoice)
 
 var newPassword = ""
-
+var generator = (charChoice, charLength) => {
+    console.log("line 64" + charChoice)
 // for loop userpassword choice array .length add math random inside
-for (var i = 0; i < passLength; i++) {
-   var char = Math.floor(Math.random() * userPasswordChoice)
-   newPassword += userPasswordChoice[char];
+for (var i = 0; i < charLength; i++) {
+    var char = Math.floor(Math.random() * charChoice.length)
+    console.log(char)
+    console.log(charChoice[char]) 
+    //newPassword += userPasswordChoice[char];
+    //console.log(i)
+    console.log(newPassword)
+ }
+
+ 
+ //writePassword (newPassword);
 }
 
 // to  display text use text.content
@@ -77,7 +84,7 @@ function writePassword() {
   
     passwordText.value = password;
     passwordText.textContent = newPassword;
-  }
+ }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
