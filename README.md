@@ -1,6 +1,6 @@
 ## About The Project
 
-![Portfolio Screen Shot](./images/password-generator-screenshot)
+![Password Generator Screen Shot](../images/password-generator-screenshot)
 
 >[Link to the website](https://github.com/kmcpherson49/password-generator)
 
