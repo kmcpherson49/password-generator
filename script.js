@@ -32,6 +32,10 @@ function generatePassword() {
     // if true use lowercase, else don't use lowercase
     if (lowerCase) {
         userPasswordChoice.push(lowerChar)
+        userPasswordChoice = userPasswordChoice.concat(upperChar);
+        userPasswordChoice = userPasswordChoice.concat(lowerChar);
+        userPasswordChoice = userPasswordChoice.concat(numericChar);
+        userPasswordChoice = userPasswordChoice.concat(specialChar);
     }
     console.log(userPasswordChoice)
 
@@ -54,20 +58,22 @@ function generatePassword() {
     if (special) {
         userPasswordChoice.push(specialChar)
     }
-    console.log("this is line 60 log" + userPasswordChoice)
+    console.log("this is line 57 log" + userPasswordChoice)
     generator (userPasswordChoice, passLength);
 }
 console.log("this is user choices" + userPasswordChoice)
 
+
+
 var newPassword = ""
-var generator = (charChoice, charLength) => {
-    console.log("line 64" + charChoice)
+var generator = (userPasswordChoice, passLength) => {
+    console.log("line 64" + userPasswordChoice)
 // for loop userpassword choice array .length add math random inside
-for (var i = 0; i < charLength; i++) {
-    var char = Math.floor(Math.random() * charChoice.length)
-    console.log(char)
-    console.log(charChoice[char]) 
-    //newPassword += userPasswordChoice[char];
+for (var i = 0; i < passLength; i++) {
+    var char = Math.floor(Math.random() * userPasswordChoice.length)
+    // console.log(char)
+    // console.log(charChoice[char]) 
+    newPassword += userPasswordChoice[char];
     //console.log(i)
     console.log(newPassword)
  }
