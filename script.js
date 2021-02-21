@@ -51,6 +51,13 @@ function generatePassword() {
     if (special) {
         userPasswordChoice = userPasswordChoice.concat(specialChar);
     }
+
+    if (lowerCase + upperCase + numeric + special === false ){
+    //if (lowerCase && upperCase && numeric && special === "" || lowerCase && upperCase && numeric && special === null) {
+        window.alert("Please pick at least 1 character type for your password!");
+        // use return to call it again and stop the rest of this function from running
+        return generatePassword();
+        }
     
     generator (userPasswordChoice, passLength);
 }
