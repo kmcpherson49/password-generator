@@ -2,11 +2,9 @@
 var lowerChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numericChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-//var specialChar = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\", "^",  "_"];
-var specialChar = ["!", "#", "$", "%", "&"];
+var specialChar = ["!", "#", "$", "%", "&", "_", "-", "@", ";", ":"];
 
 var userPasswordChoice = [];
-//var passLength = ''
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -29,7 +27,6 @@ function generatePassword() {
 
     // include lowercase//
     var lowerCase = window.confirm("Do you want your password to contain lowercase letters?");
-    // if true use lowercase, else don't use lowercase
     if (lowerCase) {
         userPasswordChoice = userPasswordChoice.concat(lowerChar);
     }
@@ -54,39 +51,27 @@ function generatePassword() {
     if (special) {
         userPasswordChoice = userPasswordChoice.concat(specialChar);
     }
-    console.log("this is line 57 log" + userPasswordChoice)
+    
     generator (userPasswordChoice, passLength);
 }
-console.log("this is user choices" + userPasswordChoice)
-
-
 
 var newPassword = ""
 var generator = (userPasswordChoice, passLength) => {
-    console.log("line 64" + userPasswordChoice)
-// for loop userpassword choice array .length add math random inside
+    console.log(userPasswordChoice)
+
 for (var i = 0; i < passLength; i++) {
     var char = Math.floor(Math.random() * userPasswordChoice.length)
-    // console.log(char)
-    // console.log(charChoice[char]) 
     newPassword += userPasswordChoice[char];
-    //console.log(i)
+
     console.log(newPassword)
  }
-
- 
- //writePassword (newPassword);
 }
 
-// to  display text use text.content
 // Write password to the #password input
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
-  
-    //passwordText.value = password;
     passwordText.textContent = newPassword;
-    //newPassword = alert("Your new password:" + newPassword);
  }
 
 // Add event listener to generate button
