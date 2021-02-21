@@ -31,32 +31,28 @@ function generatePassword() {
     var lowerCase = window.confirm("Do you want your password to contain lowercase letters?");
     // if true use lowercase, else don't use lowercase
     if (lowerCase) {
-        userPasswordChoice.push(lowerChar)
-        userPasswordChoice = userPasswordChoice.concat(upperChar);
         userPasswordChoice = userPasswordChoice.concat(lowerChar);
-        userPasswordChoice = userPasswordChoice.concat(numericChar);
-        userPasswordChoice = userPasswordChoice.concat(specialChar);
     }
     console.log(userPasswordChoice)
 
     // include uppercase//
     var upperCase = window.confirm("Do you want your password to contain uppercase letters?");
     if (upperCase) {
-        userPasswordChoice.push(upperChar)
+        userPasswordChoice = userPasswordChoice.concat(upperChar);
     }
     console.log(userPasswordChoice)
 
     // include numeric values//
     var numeric = window.confirm("Do you want your password to contain numeric values?");
     if (numeric) {
-        userPasswordChoice.push(numericChar)
+        userPasswordChoice = userPasswordChoice.concat(numericChar);
     }
     console.log(userPasswordChoice)
 
     // include lowercase//
     var special = window.confirm("Do you want your password to contain special characters?");
     if (special) {
-        userPasswordChoice.push(specialChar)
+        userPasswordChoice = userPasswordChoice.concat(specialChar);
     }
     console.log("this is line 57 log" + userPasswordChoice)
     generator (userPasswordChoice, passLength);
@@ -88,8 +84,9 @@ function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
   
-    passwordText.value = password;
+    //passwordText.value = password;
     passwordText.textContent = newPassword;
+    //newPassword = alert("Your new password:" + newPassword);
  }
 
 // Add event listener to generate button
