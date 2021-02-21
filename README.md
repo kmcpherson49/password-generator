@@ -1,6 +1,6 @@
 ## About The Project
 
-![Password Generator Screen Shot](/images/password-generator-screenshot)
+![Password Generator Screen Shot](/images/password-generator-screenshot.jpg)
 
 >[Link to the website](https://github.com/kmcpherson49/password-generator)
 
@@ -16,4 +16,4 @@
 
 Krista McPherson - [Github pages](https://kmcpherson49.github.io/)
 
-Project Link: [https://kmcpherson49.github.io/password-generator/](https://kmcpherson49.github.io/password-generator/.)
+Project Link: [https://kmcpherson49.github.io/password-generator/](https://kmcpherson49.github.io/password-generator/)
